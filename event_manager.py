@@ -14,10 +14,15 @@ def format_event(event):
     return f"{event['date']} | {event['title']} | {event['venue']}"
 
 
+def sort_events_by_date(events):
+    """Return events sorted chronologically, earliest first."""
+    return sorted(events, key=lambda event: event["date"])
+
+
 def build_report(events):
     """Build a printable event report."""
     lines = ["Student Club Events", "-------------------"]
-    for event in events:
+    for event in sort_events_by_date(events):
         lines.append(format_event(event))
     return "\n".join(lines)
 
