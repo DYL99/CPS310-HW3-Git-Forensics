@@ -36,3 +36,13 @@ def test_load_events_reads_json(tmp_path):
     assert result == [
         {"title": "Test Event", "date": "2026-11-01", "venue": "Library"}
     ]
+
+
+def test_build_report_handles_missing_title():
+    events = [
+        {"date": "2026-11-15", "venue": "Library"}
+    ]
+
+    result = build_report(events)
+
+    assert "Untitled Event" in result

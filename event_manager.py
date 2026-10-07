@@ -11,7 +11,8 @@ def load_events(filename):
 
 def format_event(event):
     """Return one event as a readable line of text."""
-    return f"{event['date']} | {event['title']} | {event['venue']}"
+    title = event.get("title", "Untitled Event")
+    return f"{event['date']} | {title} | {event['venue']}"
 
 
 def sort_events_by_date(events):
