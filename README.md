@@ -20,3 +20,7 @@ python event_manager.py
 ```text
 python -m pytest -v
 ```
+
+## Data Notes
+
+Every event must include a date and venue. If a title is missing, the report displays `Untitled Event` so that one incomplete record does not prevent the full report from being displayed.
