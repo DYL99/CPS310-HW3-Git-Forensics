@@ -46,3 +46,17 @@ def test_build_report_handles_missing_title():
     result = build_report(events)
 
     assert "Untitled Event" in result
+
+
+def test_filter_events_by_venue_is_case_insensitive():
+    from event_manager import filter_events_by_venue
+
+    events = [
+        {"title": "A", "date": "2026-11-01", "venue": "Student Center"},
+        {"title": "B", "date": "2026-11-02", "venue": "Library"},
+        {"title": "C", "date": "2026-11-03", "venue": "student center"},
+    ]
+
+    result = filter_events_by_venue(events, "STUDENT CENTER")
+
+    assert [event["title"] for event in result] == ["A", "C"]

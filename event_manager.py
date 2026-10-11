@@ -20,6 +20,15 @@ def sort_events_by_date(events):
     return sorted(events, key=lambda event: event["date"])
 
 
+def filter_events_by_venue(events, venue):
+    """Return events whose venue matches the requested venue."""
+    return [
+        event
+        for event in events
+        if event["venue"].lower() == venue.lower()
+    ]
+
+
 def build_report(events):
     """Build a printable event report."""
     lines = ["Student Club Events", "-------------------"]
