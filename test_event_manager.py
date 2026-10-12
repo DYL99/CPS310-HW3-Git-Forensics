@@ -60,3 +60,15 @@ def test_filter_events_by_venue_is_case_insensitive():
     result = filter_events_by_venue(events, "STUDENT CENTER")
 
     assert [event["title"] for event in result] == ["A", "C"]
+
+
+def test_build_report_can_filter_by_venue():
+    events = [
+        {"title": "Game Night", "date": "2026-11-12", "venue": "Student Center"},
+        {"title": "Movie Night", "date": "2026-11-19", "venue": "Library Auditorium"},
+    ]
+
+    result = build_report(events, venue="Student Center")
+
+    assert "Game Night" in result
+    assert "Movie Night" not in result

@@ -29,8 +29,11 @@ def filter_events_by_venue(events, venue):
     ]
 
 
-def build_report(events):
-    """Build a printable event report."""
+def build_report(events, venue=None):
+    """Build a printable event report, optionally filtered by venue."""
+    if venue:
+        events = filter_events_by_venue(events, venue)
+
     lines = ["Student Club Events", "-------------------"]
     for event in sort_events_by_date(events):
         lines.append(format_event(event))
