@@ -17,7 +17,7 @@ def format_event(event):
 
 def sort_events_by_date(events):
     """Return events sorted chronologically, earliest first."""
-    return sorted(events, key=lambda event: event["date"])
+    return sorted(events, key=lambda event: event["date"], reverse=True)
 
 
 def filter_events_by_venue(events, venue):

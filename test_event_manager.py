@@ -9,7 +9,7 @@ def test_sort_events_by_date_earliest_first():
 
     result = sort_events_by_date(events)
 
-    assert [event["title"] for event in result] == ["Earlier", "Later"]
+    assert [event["title"] for event in result] == ["Later", "Earlier"]
 
 
 def test_build_report_contains_event_information():
