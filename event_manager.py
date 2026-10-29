@@ -17,11 +17,23 @@ def format_event(event):
 
 def sort_events_by_date(events):
     """Return events sorted chronologically, earliest first."""
-    return sorted(events, key=lambda event: event["date"])
+    return sorted(events, key=lambda event: event["date"], reverse=True)
 
 
-def build_report(events):
-    """Build a printable event report."""
+def filter_events_by_venue(events, venue):
+    """Return events whose venue matches the requested venue."""
+    return [
+        event
+        for event in events
+        if event["venue"].lower() == venue.lower()
+    ]
+
+
+def build_report(events, venue=None):
+    """Build a printable event report, optionally filtered by venue."""
+    if venue:
+        events = filter_events_by_venue(events, venue)
+
     lines = ["Student Club Events", "-------------------"]
     for event in sort_events_by_date(events):
         lines.append(format_event(event))
